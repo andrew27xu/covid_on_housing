@@ -29,11 +29,12 @@ In order to investigate Covid 19 impact on the housing market, the time range is
 Due to time limitation, other data is not analyzed. If time allowed, Covid 19 data will be analyzed and integrate with the housing data.
 
 ##Part 4: Method
-This project used Pandas as the main library to analyze the data and generate plots.
+This project used Pandas as the main library to analyze the data and generate plots. The predicted housing market value is generated from the time range Jan 
+2019 to March 2020 with linear regression from sklearn library.
 
 ##Part 5: Result
 Figure 1. National Trend from Jan 2019 to June 2021
-![img.png](img.png)
+![img_1.png](img_1.png)
 
 
 

@@ -38,12 +38,21 @@ def covid(df_z,df_p,df_d,df_c):
     date_pre = date_converted[:15] #up to 2020/3
     linear_regressor = LinearRegression()
     linear_regressor.fit(date_pre, df_z_T["average"][:15])
-    Y_pred = linear_regressor.predict(date_converted)
+    y_pred = linear_regressor.predict(date_converted)
+    y_pred = np.expand_dims(y_pred, axis=1)
+    df_z_T['predicted'] = y_pred
+
 
     #plot average
-    average_plot = df_z_T['average']
-    f1 = average_plot.plot( )
-    f1.get_yaxis().set_major_formatter(
+    average_plot = df_z_T[['average','predicted']]
+    fig, ax = plt.subplots()
+    #fig =  average_plot.plot( )
+    styles = ['b-',  'r--']
+    linewidths = [2, 2]
+    for col, style, lw in zip(average_plot.columns, styles, linewidths):
+        average_plot[col].plot(style=style, lw=lw, ax=ax)
+    ax.legend()
+    ax.get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
     plt.title ("National Trend From Jan 2019 to June 2021",fontsize=16)
     plt.xlabel("Time [date]", fontsize=14)
