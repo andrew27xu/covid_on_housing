@@ -4,6 +4,7 @@ import matplotlib
 from sklearn.linear_model import LinearRegression
 import numpy as np
 import datetime as dt
+from textwrap import wrap
 
 
 def covid(df_z,df_p,df_d,df_c):
@@ -41,6 +42,7 @@ def covid(df_z,df_p,df_d,df_c):
     y_pred = linear_regressor.predict(date_converted)
     y_pred = np.expand_dims(y_pred, axis=1)
     df_z_T['predicted'] = y_pred
+    df_z_T['difference'] = df_z_T["average"]-df_z_T['predicted']
 
 
     #plot average
@@ -54,9 +56,19 @@ def covid(df_z,df_p,df_d,df_c):
     ax.legend()
     ax.get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
-    plt.title ("National Trend From Jan 2019 to June 2021",fontsize=16)
-    plt.xlabel("Time [date]", fontsize=14)
-    plt.ylabel ("Average Housing Price [$]",fontsize=14)
+    ax.set_title ("National Trend From Jan 2019 to June 2021",fontsize=16)
+    ax.set_xlabel("Time [date]", fontsize=14)
+    ax.set_ylabel ("Average Housing Price [$]",fontsize=14)
+
+    # plot difference
+    diff_plot = df_z_T['difference']
+    fig2, ax2 = plt.subplots()
+    ax2.get_yaxis().set_major_formatter(
+        matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
+    ax2.set_title("\n".join(wrap("Difference Between Average Housing Price and Predicted Price",35)), fontsize=16)
+    ax2.set_xlabel("Time [date]", fontsize=14)
+    ax2.set_ylabel("\n".join(wrap("Average Housing Price - Predicted Housing Price [$]",35)), fontsize=14)
+    diff_plot.plot()
     plt.tight_layout()
     plt.show()
 
