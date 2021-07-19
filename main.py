@@ -1,23 +1,36 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def covid(df_z,df_p,df_d,df_c):
     #pre processing
     df_z.drop(df_z.iloc[:, 0:8], axis = 1, inplace = True)
-
-    for col in df_z.columns[1:]:
-         df_z[col] = df_z[col].astype('float')
     #print(df_z)
+
+    #rearrange columns
+    cols = df_z.columns.tolist()
+    cols = cols[-30:]+cols[0:1]
+    df_z = df_z[cols]
+    #print(df_z)
+    for col in cols[:-1]:
+        df_z[col] = df_z[col].astype('float')
+    print(df_z)
 
     df_z_T = df_z.T
     new_header = df_z_T.iloc[0]
     df_z_T = df_z_T[1:]
     df_z_T.columns = new_header
     #df_z_T = df_z_T.reset_index()
-    df_z_T = df_z_T.rename_axis("Time")
-    print(df_z_T)
-    print(df_z_T.columns.values)
+    #df_z_T = df_z_T.rename_axis("Time")
+    # print(df_z_T)
+    # print(df_z_T.columns.values)
+
     df_z_T.index = pd.to_datetime(df_z_T.index)
-    
+    df_z_T["average"] = df_z_T.mean(axis=1)
+    print(df_z_T)
+    average_plot = df_z_T.iloc["2019-01-31":]
+    average_plot.plot()
+    plt.show()
+
 
 
 

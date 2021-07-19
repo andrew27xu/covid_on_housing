@@ -10,7 +10,9 @@ United States only.
 Since beginning of 2020 when Covid19 started, every aspect of daily life has been changed, such as physcial and mental health,
 social justice and inequality, racial discrimination, as well as economy and financial activities.
 The most prominent effect of Covid 19 on economy is great amount of QE, and as a result, large variation in the stock market. My interest lies in how Covid 19 affect common people's life 
-financially. To answer this question, I chose housing buying activities as one case of all kinds of financial activities for following reasons:
+financially. 
+
+To answer this question, I chose housing buying activities as one case of all kinds of financial activities for following reasons:
 (1) housing market is directly close to every body's life; (2) it has large local impact as well as national trend; (3) baseline can be easily established by pre-pandemic housing market; (4) many other factors make a contribution, such as policy making
 and people's preference, which help us to understand contributions from other factors. Therefore,
 I would like to investigate how the housing market is affected by Covid 19. 
