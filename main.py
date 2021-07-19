@@ -77,7 +77,7 @@ def covid(df_z,df_p,df_d,df_c):
 
 
 if __name__ == '__main__':
-    real = False
+    real = True
     generate = False
 
     # generate
