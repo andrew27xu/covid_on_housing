@@ -19,15 +19,17 @@ I would like to investigate how the housing market is affected by Covid 19.
 
 ##Part 2: Data Source
 Housing Market Data is acquired from Zillow [2], and Covid 19 data in 
-the US is obtained on USfacts.org [3]. Both data are readly download from the website. The downloaded format is CSV file, where Zillow data is around 72 MB, and Covid data is around 11 MB.
+the US is obtained on USfacts.org [3]. Both data are readily download from the website. The downloaded format is CSV file, where Zillow data is around 72 MB, and Covid data is around 11 MB.
 
 ##Part 3: Data Clean and Preprocessing
 ### Data Source 1: Zillow
 For better integration with other data sources, here only county information is used for geographic information. Readers may also use other geographic information such as Zip code, City for analysis.
-In order to investigate Covid 19 impact on the houring market, the time range is limited from Jan 2019 to June 2021, the latest date which the data is available.
+In order to investigate Covid 19 impact on the housing market, the time range is limited from Jan 2019 to June 2021, the latest date which the data is available.
+### Data Source 2: Others
+Due to time limitation, other data is not analyzed. If time allowed, Covid 19 data will be analyzed and integrate with the housing data.
 
 ##Part 4: Method
-This project used Pandas as main libary to analyze the data and generate plots.
+This project used Pandas as the main library to analyze the data and generate plots.
 
 ##Part 5: Result
 Figure 1. National Trend from Jan 2019 to June 2021

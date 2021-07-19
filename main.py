@@ -1,6 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
+from sklearn.linear_model import LinearRegression
+import numpy as np
+import datetime as dt
+
 
 def covid(df_z,df_p,df_d,df_c):
     #pre processing
@@ -28,6 +32,13 @@ def covid(df_z,df_p,df_d,df_c):
     #calculate average
     df_z_T.index = pd.to_datetime(df_z_T.index)
     df_z_T["average"] = df_z_T.mean(axis=1)
+
+    #linear regression
+    date_converted = np.array(df_z_T.index.map(dt.datetime.toordinal)).reshape(-1,1)
+    date_pre = date_converted[:15] #up to 2020/3
+    linear_regressor = LinearRegression()
+    linear_regressor.fit(date_pre, df_z_T["average"][:15])
+    Y_pred = linear_regressor.predict(date_converted)
 
     #plot average
     average_plot = df_z_T['average']
