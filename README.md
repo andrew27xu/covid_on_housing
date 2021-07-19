@@ -35,6 +35,11 @@ This project used Pandas as the main library to analyze the data and generate pl
 ##Part 5: Result
 Figure 1. National Trend from Jan 2019 to June 2021
 ![img_1.png](img_1.png)
+As you can see in the Figure 1, national trend of the housing market shows very interesting trend. Overall, it increases with time within the time period of intrest, however, the rate
+varies significantly. From Jan 2019 to April 2020, the average value mildly increases. Then 
+upto July 2020, it shows plateau and almost no increases.From July 2020, the average price increases significantly. 
+
+It is even more obvious if we compare the average price with the predicted value from linar regression model. The average housing value follow the prediction quite well up to early 2020. And then it deviates significantly.
 
 
 
