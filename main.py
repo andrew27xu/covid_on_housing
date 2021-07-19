@@ -1,24 +1,61 @@
 import pandas as pd
 
-def covid(df):
+def covid(df_z,df_p,df_d,df_c):
+    #pre processing
+    df_z.drop(df_z.iloc[:, 0:8], axis = 1, inplace = True)
 
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    for col in df_z.columns[1:]:
+         df_z[col] = df_z[col].astype('float')
+    #print(df_z)
+
+    df_z_T = df_z.T
+    new_header = df_z_T.iloc[0]
+    df_z_T = df_z_T[1:]
+    df_z_T.columns = new_header
+    #df_z_T = df_z_T.reset_index()
+    df_z_T = df_z_T.rename_axis("Time")
+    print(df_z_T)
+    print(df_z_T.columns.values)
+    df_z_T.index = pd.to_datetime(df_z_T.index)
+    
+
+
 
 
 if __name__ == '__main__':
-    real = True
+    real = False
     generate = False
 
     # generate
     if generate:
-        df_housing = pd.read_csv("Incidents_Responded_to_by_Fire_Companies.csv")
-        example = df[1:2000]
-        example.to_csv("data_example.csv")
+        df_z = pd.read_csv("zillow.csv",index_col=0)
+        example_z = df_z[1:2000]
+        example_z.to_csv("zillow_example.csv")
+
+        df_covid_death = pd.read_csv("covid_deaths_usafacts.csv",index_col=0)
+        example_covid_death = df_covid_death[1:2000]
+        example_covid_death.to_csv("death_example.csv")
+
+        df_p = pd.read_csv("covid_county_population_usafacts.csv",index_col=0)
+        example_p = df_p[1:2000]
+        example_p.to_csv("pop_example.csv")
+
+        df_covid_case = pd.read_csv("covid_confirmed_usafacts.csv",index_col=0)
+        example_covid_case = df_covid_case[1:2000]
+        example_covid_case.to_csv("case_example.csv")
+
+
 
     if real:
-        df = pd.read_csv("Incidents_Responded_to_by_Fire_Companies.csv")
+        df_z = pd.read_csv("zillow.csv")
+        df_d = pd.read_csv("covid_deaths_usafacts.csv")
+        df_p = pd.read_csv("covid_county_population_usafacts.csv")
+        df_c = pd.read_csv("covid_confirmed_usafacts.csv")
     else:
-        df = pd.read_csv("data_example.csv")
+        df_z = pd.read_csv("zillow_example.csv")
+        df_p = pd.read_csv("pop_example.csv")
+        df_c = pd.read_csv("case_example.csv")
+        df_d = pd.read_csv("death_example.csv")
 
-    covid(df)
+    covid(df_z,df_p,df_d,df_c)
 
