@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib
 
 def covid(df_z,df_p,df_d,df_c):
     #pre processing
@@ -13,22 +14,30 @@ def covid(df_z,df_p,df_d,df_c):
     #print(df_z)
     for col in cols[:-1]:
         df_z[col] = df_z[col].astype('float')
-    print(df_z)
 
+    #arrange back and transpose
+    cols = cols[-1:] + cols[0:-1]
+    df_z = df_z[cols]
     df_z_T = df_z.T
+
+    #remove header
     new_header = df_z_T.iloc[0]
     df_z_T = df_z_T[1:]
     df_z_T.columns = new_header
-    #df_z_T = df_z_T.reset_index()
-    #df_z_T = df_z_T.rename_axis("Time")
-    # print(df_z_T)
-    # print(df_z_T.columns.values)
 
+    #calculate average
     df_z_T.index = pd.to_datetime(df_z_T.index)
     df_z_T["average"] = df_z_T.mean(axis=1)
-    print(df_z_T)
-    average_plot = df_z_T.iloc["2019-01-31":]
-    average_plot.plot()
+
+    #plot average
+    average_plot = df_z_T['average']
+    f1 = average_plot.plot( )
+    f1.get_yaxis().set_major_formatter(
+        matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
+    plt.title ("National Trend From Jan 2019 to June 2021",fontsize=16)
+    plt.xlabel("Time [date]", fontsize=14)
+    plt.ylabel ("Average Housing Price [$]",fontsize=14)
+    plt.tight_layout()
     plt.show()
 
 
