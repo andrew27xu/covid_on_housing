@@ -37,11 +37,15 @@ Figure 1. National Trend from Jan 2019 to June 2021
 ![img_1.png](img_1.png)
 As you can see in the Figure 1, national trend of the housing market shows very interesting trend. Overall, it increases with time within the time period of intrest, however, the rate
 varies significantly. From Jan 2019 to April 2020, the average value mildly increases. Then 
-upto July 2020, it shows plateau and almost no increases.From July 2020, the average price increases significantly. 
+upto July 2020, it shows plateau and almost no increases.From July 2020, the average price increases significantly. Comparing the average value with predicted price, the average housing value follow the prediction quite well up to early 2020. And then it deviates significantly.
 
-It is even more obvious if we compare the average price with the predicted value from linar regression model. The average housing value follow the prediction quite well up to early 2020. And then it deviates significantly.
+Figure 2. Difference Between Average Housing Price and Predicted Price
+![img_2.png](img_2.png)
+It is even more obvious if we plot the difference between the average price with the predicted value from linar regression model, as shown in Figure 2.
+The difference is close to zero till Jan 2020. Then it slightly increases upto March 2020. With Stay-at-Home order in March, it the difference decreases till July, 2020. Then it increases significantly.
 
-
+##Part 6: Conclusion
+From this preliminary analysis, we can clearly see the correlation between Covid 19 and the housing market. Due to time limitation, I only get chance to analyze the national trend, but further analysis can be done with these data sets.
 
 ##Ref
 [1] https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data
