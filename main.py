@@ -59,6 +59,8 @@ def covid(df_z,df_p,df_d,df_c):
     ax.set_title ("National Trend From Jan 2019 to June 2021",fontsize=16)
     ax.set_xlabel("Time [date]", fontsize=14)
     ax.set_ylabel ("Average Housing Price [$]",fontsize=14)
+    plt.tight_layout()
+    plt.savefig("image1.png")
 
     # plot difference
     diff_plot = df_z_T['difference']
@@ -70,7 +72,9 @@ def covid(df_z,df_p,df_d,df_c):
     ax2.set_ylabel("\n".join(wrap("Average Housing Price - Predicted Housing Price [$]",35)), fontsize=14)
     diff_plot.plot()
     plt.tight_layout()
+    plt.savefig("image2.png")
     plt.show()
+
 
 
 

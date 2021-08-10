@@ -1,4 +1,3 @@
-# Data Incubator Code Challenge Section 1
 # Covid Impact on US Housing Market
 
 ##Part 1: Motivation
@@ -9,7 +8,7 @@ United States only.
 
 Since beginning of 2020 when Covid19 started, every aspect of daily life has been changed, such as physcial and mental health,
 social justice and inequality, racial discrimination, as well as economy and financial activities.
-The most prominent effect of Covid 19 on economy is great amount of QE, and as a result, large variation in the stock market. My interest lies in how Covid 19 affect common people's life 
+The most prominent effect of Covid 19 on economy is great amount of QE, and as a result, large variation in the stock market. My interest lies in how Covid 19 affects common people's life 
 financially. 
 
 To answer this question, I chose housing buying activities as one case of all kinds of financial activities for following reasons:
@@ -34,13 +33,14 @@ This project used Pandas as the main library to analyze the data and generate pl
 
 ##Part 5: Result
 Figure 1. National Trend from Jan 2019 to June 2021
-![img_3.png](img_3.png)
+![image1.png](image1.png)
+
 As you can see in the Figure 1, national trend of the housing market shows very interesting trend. Overall, it increases with time within the time period of interest, however, the rate
 varies significantly and show significant correlation with Covid 19. From Jan 2019 to April 2020, the average price mildly increases. Then 
 upto July 2020, it shows plateau and almost no increases. From July 2020, the average price increases significantly. Comparing the average price with predicted price, the average housing value follow the prediction quite well up to April 2020. And then it deviates significantly.
 
 Figure 2. Difference Between Average Housing Price and Predicted Price
-![img_4.png](img_4.png)!
+![image2.png](image2.png)
 It is even more obvious if we plot the difference between the average price with the predicted value from linear regression model, as shown in Figure 2.
 The difference is close to zero till Jan 2020. Then it slightly increases upto March 2020. With Stay-at-Home order in March, the difference stays the same till July, 2020. Then it increases significantly.
 
