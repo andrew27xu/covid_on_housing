@@ -50,5 +50,6 @@ From this preliminary analysis, we can clearly see the correlation between Covid
 
 ##Ref
 [1] https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data
-[2] https://www.zillow.com/research/data/
-[3] https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/
+[2] Housing related data from Zillow: https://www.zillow.com/research/data/
+[3] Covid related data: https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/
+[4] Federal Fund rate data: https://fred.stlouisfed.org/series/FEDFUNDS

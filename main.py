@@ -7,7 +7,7 @@ import datetime as dt
 from textwrap import wrap
 
 
-def covid(df_z,df_p,df_d,df_c):
+def covid(df_z,df_p,df_d,df_c,df_r,df_i):
     #pre processing
     df_z.drop(df_z.iloc[:, 0:5], axis = 1, inplace = True)
     df_z.drop(df_z.iloc[:, 1:3], axis=1, inplace=True)
@@ -88,8 +88,9 @@ def covid(df_z,df_p,df_d,df_c):
     plt.tight_layout()
     plt.savefig("image1.png")
 
-    # plot difference
+    # plot correlation
     diff_plot = df_z_average_T['difference']
+
     fig2, ax2 = plt.subplots()
     ax2.get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
@@ -100,8 +101,6 @@ def covid(df_z,df_p,df_d,df_c):
     plt.tight_layout()
     plt.savefig("image2.png")
     plt.show()
-
-
 
 
     df_p.drop(df_p.iloc[:, 0:1], axis = 1, inplace = True)
@@ -150,11 +149,16 @@ if __name__ == '__main__':
         df_d = pd.read_csv("covid_deaths_usafacts.csv")
         df_p = pd.read_csv("covid_county_population_usafacts.csv")
         df_c = pd.read_csv("covid_confirmed_usafacts.csv")
+        df_r = pd.read_excel("FEDFUNDS.xls")
+        df_i = pd.read_csv("Metro_invt_fs_uc_sfrcondo_sm_week.csv")
     else:
         df_z = pd.read_csv("zillow_example.csv")
         df_p = pd.read_csv("pop_example.csv")
         df_c = pd.read_csv("case_example.csv")
         df_d = pd.read_csv("death_example.csv")
+        df_r = pd.read_excel("FEDFUNDS.xls")
+        df_i = pd.read_csv("Metro_invt_fs_uc_sfrcondo_sm_week.csv")
 
-    covid(df_z,df_p,df_d,df_c)
+
+    covid(df_z,df_p,df_d,df_c,df_r,df_i)
 
