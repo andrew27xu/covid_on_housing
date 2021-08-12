@@ -44,6 +44,7 @@ Figure 2. Difference Between Average Housing Price and Predicted Price
 It is even more obvious if we plot the difference between the average price with the predicted value from linear regression model, as shown in Figure 2.
 The difference is close to zero till Jan 2020. Then it slightly increases upto March 2020. With Stay-at-Home order in March, the difference stays the same till July, 2020. Then it increases significantly.
 
+
 ##Part 6: Conclusion
 From this preliminary analysis, we can clearly see the correlation between Covid 19 and the housing market. Due to time limitation, I only get chance to analyze the national trend, but further analysis can be done with these data sets.
 
