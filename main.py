@@ -59,12 +59,19 @@ def covid(df_z,df_p,df_d,df_c):
 
 
     #plot average
-    average_plot = df_z_average_T[['average','predicted']]
+    covid_average = pd.concat([df_c_average_T["average"],df_d_average_T["average"]],axis=1)
+    covid_average.columns=["Covid Cases Average", "Covid Death Average"]
+    z_average = df_z_average_T[['average','predicted']]
+    z_average.columns = ["Housing Price Average", "Housing Price Predicted"]
+    average_plot = pd.concat([covid_average, z_average], axis=1)
+    average_plot = average_plot[pd.notnull(average_plot["Housing Price Average"])]
+    average_plot = average_plot.fillna(0)
+
     fig, ax = plt.subplots()
     #fig =  average_plot.plot( )
-    styles = ['b-',  'r--']
-    linewidths = [2, 2]
-    for col, style, lw in zip(average_plot.columns, styles, linewidths):
+    styles = ['c-','m-','b-',  'r--']
+    linewidths = [2, 2,2,2]
+    for col, style, lw in zip(average_plot.columns[2:], styles[2:], linewidths[2:]):
         average_plot[col].plot(style=style, lw=lw, ax=ax)
     ax.legend()
     ax.get_yaxis().set_major_formatter(
@@ -72,6 +79,12 @@ def covid(df_z,df_p,df_d,df_c):
     ax.set_title ("National Trend From Jan 2019 to June 2021",fontsize=16)
     ax.set_xlabel("Time [date]", fontsize=14)
     ax.set_ylabel ("Average Housing Price [$]",fontsize=14)
+
+    ax1_2 =ax.twinx()
+    for col, style, lw in zip(average_plot.columns[:2], styles[:2], linewidths[:2]):
+        average_plot[col].plot(style=style, lw=lw, ax=ax1_2)
+    ax1_2.set_ylabel("Average Covid Cases and Death ", fontsize=14)
+    ax1_2.legend(loc="center left")
     plt.tight_layout()
     plt.savefig("image1.png")
 
@@ -86,7 +99,7 @@ def covid(df_z,df_p,df_d,df_c):
     diff_plot.plot()
     plt.tight_layout()
     plt.savefig("image2.png")
-    #plt.show()
+    plt.show()
 
 
 
@@ -109,7 +122,7 @@ def covid(df_z,df_p,df_d,df_c):
 
 
 if __name__ == '__main__':
-    real =False
+    real =True
     generate = False
 
     # generate
