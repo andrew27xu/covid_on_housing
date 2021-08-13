@@ -103,13 +103,21 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i):
     rgb_values = sns.color_palette("Set1", 51)
     color_map = dict(zip(color_labels, rgb_values))
 
+
     fig2, ax2 = plt.subplots()
     ax2.get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
     ax2.set_title("\n".join(wrap("Difference Between Average Housing Price and Predicted Price",35)), fontsize=16)
     ax2.set_xlabel("Time [date]", fontsize=14)
     ax2.set_ylabel("\n".join(wrap("Average Housing Price - Predicted Housing Price [$]",35)), fontsize=14)
-    house_covid.plot.scatter("Covid Cases","Housing Value", c=house_covid.index.map(color_map),)
+    #house_covid.plot.scatter(x="Covid Cases",y="Housing Value", c=house_covid.index.map(color_map),)
+    for i, c in enumerate(rgb_values):
+        x = house_covid["Covid Cases"][i]
+        y = house_covid["Housing Value"][i]
+        l = house_covid.index[i]
+
+        ax2.scatter(x, y, label=l, s=50, linewidth=0.1, c=c)
+
     ax2.legend()
     plt.tight_layout()
     plt.savefig("image2.png")
