@@ -68,12 +68,10 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i):
     average_plot = average_plot.fillna(0)
 
     fig, ax = plt.subplots()
-    #fig =  average_plot.plot( )
     styles = ['c-','m-','b-',  'r--']
     linewidths = [2, 2,2,2]
     for col, style, lw in zip(average_plot.columns[2:], styles[2:], linewidths[2:]):
         average_plot[col].plot(style=style, lw=lw, ax=ax)
-    ax.legend()
     ax.get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
     ax.set_title ("National Trend From Jan 2019 to June 2021",fontsize=16)
@@ -81,10 +79,14 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i):
     ax.set_ylabel ("Average Housing Price [$]",fontsize=14)
 
     ax1_2 =ax.twinx()
-    for col, style, lw in zip(average_plot.columns[:2], styles[:2], linewidths[:2]):
+    for col, style, lw in zip(average_plot.columns[:1], styles[:1], linewidths[:1]):
         average_plot[col].plot(style=style, lw=lw, ax=ax1_2)
-    ax1_2.set_ylabel("Average Covid Cases and Death ", fontsize=14)
-    ax1_2.legend(loc="center left")
+    ax1_2.set_ylabel("Average Covid Cases", fontsize=14)
+    # combine legends
+    lines, labels = ax.get_legend_handles_labels()
+    lines2, labels2 = ax1_2.get_legend_handles_labels()
+    ax1_2.legend(lines + lines2, labels + labels2, loc=0)
+
     plt.tight_layout()
     plt.savefig("image1.png")
 
