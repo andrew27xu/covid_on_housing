@@ -5,6 +5,7 @@ from sklearn.linear_model import LinearRegression
 import numpy as np
 import datetime as dt
 from textwrap import wrap
+import seaborn as sns
 
 
 def covid(df_z,df_p,df_d,df_c,df_r,df_i):
@@ -91,14 +92,16 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i):
     plt.savefig("image1.png")
 
     # plot most impacted state
-    diff_plot = df_z_average_T['difference']
-    # covid_by_state = df_c_average.iloc[:,-1:]
-    # house_by_state = df_z_average.loc[:, df_z_average.columns[[0,-1]]]
-    # house_by_state = house_by_state.set_index("State")
-    # print(len(house_by_state.index))
-    # print(house_by_state)
-    #house_covid = pd.concat([covid_by_state,house_by_state],axis=1)
+    #diff_plot = df_z_average_T['difference']
+    covid_by_state = df_c_average.iloc[:,-1:]
+    house_by_state = df_z_average.iloc[:, -1:]
+    house_covid = pd.concat([covid_by_state,house_by_state],axis=1)
+    house_covid.columns = ["Covid Cases","Housing Value"]
 
+    #color map
+    color_labels = house_covid.index
+    rgb_values = sns.color_palette("Set1", 51)
+    color_map = dict(zip(color_labels, rgb_values))
 
     fig2, ax2 = plt.subplots()
     ax2.get_yaxis().set_major_formatter(
@@ -106,7 +109,8 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i):
     ax2.set_title("\n".join(wrap("Difference Between Average Housing Price and Predicted Price",35)), fontsize=16)
     ax2.set_xlabel("Time [date]", fontsize=14)
     ax2.set_ylabel("\n".join(wrap("Average Housing Price - Predicted Housing Price [$]",35)), fontsize=14)
-    diff_plot.plot()
+    house_covid.plot.scatter("Covid Cases","Housing Value", c=house_covid.index.map(color_map),)
+    ax2.legend()
     plt.tight_layout()
     plt.savefig("image2.png")
     plt.show()
@@ -126,7 +130,7 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i):
 
 
 if __name__ == '__main__':
-    real =False
+    real =True
     generate = False
 
     # generate
