@@ -12,24 +12,24 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i):
     df_z.drop(df_z.iloc[:, 0:5], axis = 1, inplace = True)
     df_z.drop(df_z.iloc[:, 1:3], axis=1, inplace=True)
 
-    #rearrange columns
+    #rearrange columns and change data type
     #dz
     cols = df_z.columns.tolist()
-    cols = cols[-30:]+cols[0:1] #chose data and state
+    cols = cols[0:1]+cols[-30:] #chose data and state
     df_z_average= df_z[cols]
-    for col in cols[:-1]:
+    for col in cols[1:]:
         df_z_average[col] = df_z_average[col].astype('float')
-    #dc and d_d
 
-    #arrange back and transpose
-    cols = cols[-1:] + cols[0:-1]
-    df_z_average = df_z_average[cols]
+    #calculate mean transpose
+    df_z_average= df_z_average.set_index("State")
+    df_z_average = df_z_average.groupby("State").mean()
     df_z_average_T = df_z_average.T
 
+
     #remove header
-    new_header = df_z_average_T.iloc[0]
-    df_z_average_T = df_z_average_T[1:]
-    df_z_average_T.columns = new_header
+    # new_header = df_z_average_T.iloc[0]
+    # df_z_average_T = df_z_average_T[1:]
+    # df_z_average_T.columns = new_header
 
     #calculate average
     df_z_average_T.index = pd.to_datetime(df_z_average_T.index)
@@ -68,7 +68,7 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i):
     average_plot = average_plot.fillna(0)
 
     fig, ax = plt.subplots()
-    styles = ['c-','m-','b-',  'r--']
+    styles = ['c-.','m-','b-',  'r--']
     linewidths = [2, 2,2,2]
     for col, style, lw in zip(average_plot.columns[2:], styles[2:], linewidths[2:]):
         average_plot[col].plot(style=style, lw=lw, ax=ax)
@@ -90,8 +90,15 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i):
     plt.tight_layout()
     plt.savefig("image1.png")
 
-    # plot correlation
+    # plot most impacted state
     diff_plot = df_z_average_T['difference']
+    # covid_by_state = df_c_average.iloc[:,-1:]
+    # house_by_state = df_z_average.loc[:, df_z_average.columns[[0,-1]]]
+    # house_by_state = house_by_state.set_index("State")
+    # print(len(house_by_state.index))
+    # print(house_by_state)
+    #house_covid = pd.concat([covid_by_state,house_by_state],axis=1)
+
 
     fig2, ax2 = plt.subplots()
     ax2.get_yaxis().set_major_formatter(
@@ -110,10 +117,6 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i):
     df_p_mean = df_p.groupby("State").mean()
 
 
-    df_c_mean = df_c.groupby("State").mean()
-    df_d_mean = df_d.groupby("State").mean()
-
-
 
 
 
@@ -123,7 +126,7 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i):
 
 
 if __name__ == '__main__':
-    real =True
+    real =False
     generate = False
 
     # generate
