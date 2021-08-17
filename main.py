@@ -5,7 +5,6 @@ from sklearn.linear_model import LinearRegression
 import numpy as np
 import datetime as dt
 from textwrap import wrap
-import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -62,11 +61,11 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i,df_s,df_pol):
 
     #plot average
     covid_average = pd.concat([df_c_average_T["average"],df_d_average_T["average"]],axis=1)
-    covid_average.columns=["Covid Cases Average", "Covid Death Average"]
+    covid_average.columns=["Average Covid Cases", "Average Covid Death"]
     z_average = df_z_average_T[['average','predicted']]
-    z_average.columns = ["Housing Price Average", "Housing Price Predicted"]
+    z_average.columns = ["Average Housing Price", "Predicted Housing Price"]
     average_plot = pd.concat([covid_average, z_average], axis=1)
-    average_plot = average_plot[pd.notnull(average_plot["Housing Price Average"])]
+    average_plot = average_plot[pd.notnull(average_plot["Average Housing Price"])]
     average_plot = average_plot.fillna(0)
 
     fig, ax = plt.subplots()
