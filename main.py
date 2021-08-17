@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
 from sklearn.linear_model import LinearRegression
+from sklearn import svm
 import numpy as np
 import datetime as dt
 from textwrap import wrap
@@ -116,7 +117,7 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i,df_s,df_pol):
     ax2.get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
     ax2.set_title("\n".join(wrap("Average Housing Value vs Accumulated Covid Cases For Each State By June 2021",35)), fontsize=16)
-    ax2.set_xlabel("Accumulated Covid Cases [#]", fontsize=14)
+    ax2.set_xlabel("Accumulated Covid Cases By State [#]", fontsize=14)
     ax2.set_ylabel("Average Housing Value By State [$]", fontsize=14)
     #no label
     #house_covid_pol.plot.scatter(x="Covid Cases", y="Housing Value", s=50, linewidth=0.1)
@@ -124,8 +125,8 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i,df_s,df_pol):
     # color_labels = house_covid.index
     # rgb_values = sns.color_palette("Set1", 51)
     # color_map = dict(zip(color_labels, rgb_values))
-
     #house_covid.plot.scatter(x="Covid Cases",y="Housing Value",s=50, linewidth=0.1, c=house_covid.index.map(color_map))
+
     #leable method 2
     # for i, c in enumerate(rgb_values):
     #     x = house_covid["Covid Cases"][i]
@@ -139,6 +140,27 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i,df_s,df_pol):
     for i,p in enumerate(political):
         data = house_covid_pol[house_covid_pol["political status"]==p]
         ax2.scatter(x=data["Covid Cases"],y=data["Housing Value"],label=p, s=50, linewidth=0.1,c=cs[i])
+    #fitting
+    clf = svm.SVC(kernel='linear', C=1000)
+    x= house_covid_pol[["Covid Cases","Housing Value"]].to_numpy()
+    y = np.expand_dims(house_covid_pol["political status"].to_numpy(),axis=1)
+    clf.fit(x, y)
+    # plot the decision function
+    xlim = ax2.get_xlim()
+    ylim = ax2.get_ylim()
+
+    # create grid to evaluate model
+    xx = np.linspace(xlim[0], xlim[1], 30)
+    yy = np.linspace(ylim[0], ylim[1], 30)
+    YY, XX = np.meshgrid(yy, xx)
+    xy = np.vstack([XX.ravel(), YY.ravel()]).T
+    Z = clf.decision_function(xy).reshape(XX.shape)
+
+    # plot decision boundary and margins
+    ax2.contour(XX, YY, Z, colors='k', levels=[-1, 0, 1], alpha=0.5, linestyles=['-', '-', '-'])
+    # plot support vectors
+    ax2.scatter(clf.support_vectors_[:, 0], clf.support_vectors_[:, 1], s=100,linewidth=1, facecolors='none', edgecolors='k')
+
 
 
     ax2.legend()
