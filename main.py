@@ -6,9 +6,10 @@ import numpy as np
 import datetime as dt
 from textwrap import wrap
 import seaborn as sns
+import warnings
+warnings.filterwarnings('ignore')
 
-
-def covid(df_z,df_p,df_d,df_c,df_r,df_i):
+def covid(df_z,df_p,df_d,df_c,df_r,df_i,df_s,df_pol):
     #pre processing
     df_z.drop(df_z.iloc[:, 0:5], axis = 1, inplace = True)
     df_z.drop(df_z.iloc[:, 1:3], axis=1, inplace=True)
@@ -98,35 +99,58 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i):
     house_covid = pd.concat([covid_by_state,house_by_state],axis=1)
     house_covid.columns = ["Covid Cases","Housing Value"]
 
-    #color map
-    color_labels = house_covid.index
-    rgb_values = sns.color_palette("Set1", 51)
-    color_map = dict(zip(color_labels, rgb_values))
 
+    #political
+    df_pol["state name"] = df_pol["state name"].str[1:]
+    df_pol_recent = df_pol[["state name", "2020"]]
+    df_pol_recent = df_pol_recent.set_index("state name")
+    df_s = df_s[["State name", "Postal"]]
+    df_s = df_s.set_index("State name")
+    df_pol_s = pd.concat([df_s, df_pol_recent], axis=1)
+    df_pol_s["political status"] = np.where(df_pol_s["2020"]=="Trump","Republican","Demoncratic")
+    df_pol_s = df_pol_s[["Postal","political status"]]
+    df_pol_s  = df_pol_s.set_index("Postal")
+    house_covid_pol = pd.concat([house_covid,df_pol_s],axis=1)
+    house_covid_pol = house_covid_pol.dropna()
 
     fig2, ax2 = plt.subplots()
     ax2.get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
-    ax2.set_title("\n".join(wrap("Difference Between Average Housing Price and Predicted Price",35)), fontsize=16)
-    ax2.set_xlabel("Time [date]", fontsize=14)
-    ax2.set_ylabel("\n".join(wrap("Average Housing Price - Predicted Housing Price [$]",35)), fontsize=14)
-    #house_covid.plot.scatter(x="Covid Cases",y="Housing Value", c=house_covid.index.map(color_map),)
-    for i, c in enumerate(rgb_values):
-        x = house_covid["Covid Cases"][i]
-        y = house_covid["Housing Value"][i]
-        l = house_covid.index[i]
+    ax2.set_title("\n".join(wrap("Average Housing Value vs Accumulated Covid Cases For Each State By June 2021",35)), fontsize=16)
+    ax2.set_xlabel("Accumulated Covid Cases [#]", fontsize=14)
+    ax2.set_ylabel("Average Housing Value By State [$]", fontsize=14)
+    #no label
+    #house_covid_pol.plot.scatter(x="Covid Cases", y="Housing Value", s=50, linewidth=0.1)
+    #label method1
+    # color_labels = house_covid.index
+    # rgb_values = sns.color_palette("Set1", 51)
+    # color_map = dict(zip(color_labels, rgb_values))
 
-        ax2.scatter(x, y, label=l, s=50, linewidth=0.1, c=c)
+    #house_covid.plot.scatter(x="Covid Cases",y="Housing Value",s=50, linewidth=0.1, c=house_covid.index.map(color_map))
+    #leable method 2
+    # for i, c in enumerate(rgb_values):
+    #     x = house_covid["Covid Cases"][i]
+    #     y = house_covid["Housing Value"][i]
+    #     l = house_covid.index[i]
+    #
+    #     ax2.scatter(x, y,label = l,s=50, linewidth=0.1, c=c)
+    #label 3
+    political = house_covid_pol["political status"].unique()
+    cs = ["r","b"]
+    for i,p in enumerate(political):
+        data = house_covid_pol[house_covid_pol["political status"]==p]
+        ax2.scatter(x=data["Covid Cases"],y=data["Housing Value"],label=p, s=50, linewidth=0.1,c=cs[i])
+
 
     ax2.legend()
     plt.tight_layout()
     plt.savefig("image2.png")
     plt.show()
 
-
-    df_p.drop(df_p.iloc[:, 0:1], axis = 1, inplace = True)
-    df_p = df_p[df_p["population"]>0]
-    df_p_mean = df_p.groupby("State").mean()
+    #population
+    # df_p.drop(df_p.iloc[:, 0:1], axis = 1, inplace = True)
+    # df_p = df_p[df_p["population"]>0]
+    # df_p_mean = df_p.groupby("State").mean()
 
 
 
@@ -168,6 +192,8 @@ if __name__ == '__main__':
         df_c = pd.read_csv("covid_confirmed_usafacts.csv")
         df_r = pd.read_excel("FEDFUNDS.xls")
         df_i = pd.read_csv("Metro_invt_fs_uc_sfrcondo_sm_week.csv")
+        df_s = pd.read_csv("state name.csv")
+        df_pol = pd.read_csv("political status.csv")
     else:
         df_z = pd.read_csv("zillow_example.csv")
         df_p = pd.read_csv("pop_example.csv")
@@ -175,7 +201,9 @@ if __name__ == '__main__':
         df_d = pd.read_csv("death_example.csv")
         df_r = pd.read_excel("FEDFUNDS.xls")
         df_i = pd.read_csv("Metro_invt_fs_uc_sfrcondo_sm_week.csv")
+        df_s = pd.read_csv("state name.csv")
+        df_pol = pd.read_csv("political status.csv")
 
 
-    covid(df_z,df_p,df_d,df_c,df_r,df_i)
+    covid(df_z,df_p,df_d,df_c,df_r,df_i,df_s,df_pol)
 
