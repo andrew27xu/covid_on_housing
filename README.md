@@ -41,11 +41,14 @@ upto July 2020, the price shows slightly lower growth rate. What's interesting i
 
 Figure 2. Average Housing Value VS Accumulated Covid Cases For Each Sate By June 2021
 ![image2.png](image2.png)
-If we dig the data deeper into the state level, we will see more interesting result. Here what I plot is average housing value in each state vs accumulated cases in each state by June 2021. I also labeld 
-each state with its 2020 election result to indicate its political status. First of all, you can see there is no specfic trendline between housing value and covid c
+If we dig the data deeper into the state level, we will see more interesting result. Here what I plot is average housing value in each state vs accumulated cases in each state by June 2021. I also labeled 
+each state with its 2020 election result to indicate its political status. First of all, the data points are positioned around upper left part of the graph, indicating the more Covid cases, the higher housing value. But there is no clear trendline between these two, and they are much scattered around.
+However, there seems a ditinction between Republican states and Demoncratic states. Republican states are more in the lower left corner with smaller number of Covid cases and lower housing value, whereas Demoncratic states are more likely to have more Covid Cases and higher housing value.
+To segment Republican and Demoncratic states, I used a simple SVM model with linear kernel. The black line shows the decision surface based on housing value and covid cases. You can see the model segments the data points quite well. 
 
 ##Part 6: Conclusion
-From this preliminary analysis, we can clearly see the correlation between Covid 19 and the housing market. Due to time limitation, I only get chance to analyze the national trend, but further analysis can be done with these data sets.
+From this preliminary analysis, we can clearly see the impact of Covid 19 on the housing market. Due to time limitation, I only get chance to analyze the data at national and state level, but further analysis can be done with these data sets down to county level. As more Covid show up due to Delta variants, the past
+data analysis may shed light on future housing market.
 
 ##Ref
 [1] https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data
