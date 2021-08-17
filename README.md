@@ -33,17 +33,16 @@ This project used Pandas as the main library to analyze the data and generate pl
 
 ##Part 5: Result
 Figure 1. National Trend from Jan 2019 to June 2021
+![image1.png](image1.png)
 
+As you can see in the Figure 1, national trend of the housing market shows overall increasing trend with sigificant impact 
+from Covid 19. From Jan 2019 to March 2020, the average housing price mildly increases and follows linear regression very well, without any impact from Covid 19. Then as Covid cases increase in March 2020,
+upto July 2020, the price shows slightly lower growth rate. What's interesting is after July 2020, when the Covid 19 cases skyrocket, the average price also increases significantly. 
 
-As you can see in the Figure 1, national trend of the housing market shows very interesting trend. Overall, it increases with time but the rate
-varies significantly and show significant correlation with Covid 19. From Jan 2019 to March 2020, the average price mildly increases and follows linear regression very well, and no impact from Covid 19. Then as Covid cases increase in March 2020,
-upto July 2020, it shows slightly lower growth rate. What's more interesting, after July 2020, when the Covid 19 cases skyrocket, the average price also increases significantly. 
-
-Figure 2. Difference Between Average Housing Price and Predicted Price
+Figure 2. Average Housing Value VS Accumulated Covid Cases For Each Sate By June 2021
 ![image2.png](image2.png)
-It is even more obvious if we plot the difference between the average price with the predicted value from linear regression model, as shown in Figure 2.
-The difference is close to zero till Jan 2020. Then it slightly increases upto March 2020. With Stay-at-Home order in March, the difference stays the same till July, 2020. Then it increases significantly.
-
+If we dig the data deeper into the state level, we will see more interesting result. Here what I ploted is average housing value in each state vs accumulated cases in each state by June 2021. I also labeld 
+each state with its 2020 election result to indicate its political status. First of all, 
 
 ##Part 6: Conclusion
 From this preliminary analysis, we can clearly see the correlation between Covid 19 and the housing market. Due to time limitation, I only get chance to analyze the national trend, but further analysis can be done with these data sets.
@@ -52,4 +51,4 @@ From this preliminary analysis, we can clearly see the correlation between Covid
 [1] https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data
 [2] Housing related data from Zillow: https://www.zillow.com/research/data/
 [3] Covid related data: https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/
-[4] Federal Fund rate data: https://fred.stlouisfed.org/series/FEDFUNDS
+[4] Election Result in 2020: https://fred.stlouisfed.org/series/FEDFUNDS
