@@ -41,8 +41,8 @@ upto July 2020, the price shows slightly lower growth rate. What's interesting i
 
 Figure 2. Average Housing Value VS Accumulated Covid Cases For Each Sate By June 2021
 ![image2.png](image2.png)
-If we dig the data deeper into the state level, we will see more interesting result. Here what I ploted is average housing value in each state vs accumulated cases in each state by June 2021. I also labeld 
-each state with its 2020 election result to indicate its political status. First of all, 
+If we dig the data deeper into the state level, we will see more interesting result. Here what I plot is average housing value in each state vs accumulated cases in each state by June 2021. I also labeld 
+each state with its 2020 election result to indicate its political status. First of all, you can see there is no specfic trendline between housing value and covid c
 
 ##Part 6: Conclusion
 From this preliminary analysis, we can clearly see the correlation between Covid 19 and the housing market. Due to time limitation, I only get chance to analyze the national trend, but further analysis can be done with these data sets.

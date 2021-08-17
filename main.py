@@ -116,9 +116,9 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i,df_s,df_pol):
     fig2, ax2 = plt.subplots()
     ax2.get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
-    ax2.set_title("\n".join(wrap("Average Housing Value vs Accumulated Covid Cases For Each State By June 2021",35)), fontsize=16)
-    ax2.set_xlabel("Accumulated Covid Cases By State [#]", fontsize=14)
-    ax2.set_ylabel("Average Housing Value By State [$]", fontsize=14)
+    ax2.set_title("\n".join(wrap("Average Housing Value in June 2021 vs Accumulated Covid Cases By June 2021 For Each State",35)), fontsize=16)
+    ax2.set_xlabel("\n".join(wrap("Accumulated Covid Cases By State By June 2021 [#]",35)), fontsize=14)
+    ax2.set_ylabel("\n".join(wrap("Average Housing Value By State in June 2021 [$]",35)), fontsize=14)
     #no label
     #house_covid_pol.plot.scatter(x="Covid Cases", y="Housing Value", s=50, linewidth=0.1)
     #label method1
