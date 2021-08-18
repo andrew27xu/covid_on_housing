@@ -44,8 +44,9 @@ As you can see in the Figure 1, national trend of the housing market shows overa
 from Covid 19. From Jan 2019 to March 2020, the average housing price mildly increases and follows linear regression very well, without any impact from Covid 19. Then as Covid cases increase in March 2020,
 upto July 2020, the price shows slightly lower growth rate. What's interesting is after July 2020, when the Covid 19 cases skyrocket, the average price also increases significantly. 
 
-Figure 2. Average Housing Value VS Accumulated Covid Cases For Each Sate By June 2021
+Figure 2. Average Housing Value VS Accumulated Covid Cases For Each Sate By June 2021<br />
 ![image2.png](image2.png)
+
 If we dig the data deeper into the state level, we will see more interesting result. Here what I plot is average housing value in each state vs accumulated cases in each state by June 2021. I also labeled 
 each state with its 2020 election result to indicate its political status. First of all, the data points are positioned around upper left part of the graph, indicating the more Covid cases, the higher housing value. But there is no clear trendline between these two, and they are much scattered around.
 However, there seems a ditinction between Republican states and Demoncratic states. Republican states are more in the lower left corner with smaller number of Covid cases and lower housing value, whereas Demoncratic states are more likely to have more Covid Cases and higher housing value.
@@ -56,7 +57,7 @@ From this preliminary analysis, we can clearly see the impact of Covid 19 on the
 data analysis may shed light on future housing market.
 
 ## Ref
-[1] https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data
-[2] Housing related data from Zillow: https://www.zillow.com/research/data/
-[3] Covid related data: https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/
-[4] Election Result in 2020: https://en.wikipedia.org/wiki/Red_states_and_blue_states
+[1] https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data<br />
+[2] Housing related data from Zillow: https://www.zillow.com/research/data/<br />
+[3] Covid related data: https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/<br />
+[4] Election Result in 2020: https://en.wikipedia.org/wiki/Red_states_and_blue_states<br />
