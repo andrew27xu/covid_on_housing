@@ -6,15 +6,14 @@ Covid 19 is the most important incident happened in 2020, and continuously affec
 body's daily life. Based on wikipedia [1] and other sources, there have been 34 million confirmed cases and 608K death in the 
 United States only. 
 
-Since beginning of 2020 when Covid19 started, every aspect of daily life has been changed, such as physcial and mental health,
-social justice and inequality, racial discrimination, as well as economy and financial activities.
-The most prominent effect of Covid 19 on economy is great amount of QE, and as a result, large variation in the stock market. My interest lies in how Covid 19 affects common people's life 
+Since beginning of 2020 when Covid 19 started, every aspect of daily life has been changed, such as physical and mental health,
+social justice and inequality, racial discrimination, as well as economy.
+The most prominent effect of Covid 19 on economy is great amount of QE, and low interest rates. My interest lies in how Covid 19 affects common people's life 
 financially. 
 
-To answer this question, I chose housing buying activities as one case of all kinds of financial activities for following reasons:
-(1) housing market is directly close to every body's life; (2) it has large local impact as well as national trend; (3) baseline can be easily established by pre-pandemic housing market; (4) many other factors make a contribution, such as policy making
-and people's preference, which help us to understand contributions from other factors. Therefore,
-I would like to investigate how the housing market is affected by Covid 19. 
+To answer this question, I chose the housing market as one specific market to shed lights on Covid 19 impacts for following reasons:
+(1) the housing market is directly close to every body's life; (2) it has both local impact as well as national trend; (3) baseline can be easily established by the pre-pandemic housing market; (4) it's also impacted by other factors, such as interest rate
+and people's preference. Therefore, I would like to investigate how the housing market is affected by Covid 19. 
 
 ##Part 2: Data Source
 Housing Market Data is acquired from Zillow [2], and Covid 19 data in 
@@ -22,14 +21,20 @@ the US is obtained on USfacts.org [3]. Both data are readily download from the w
 
 ##Part 3: Data Clean and Preprocessing
 ### Data Source 1: Zillow
-For better integration with other data sources, here only county information is used for geographic information. Readers may also use other geographic information such as Zip code, City for analysis.
-In order to investigate Covid 19 impact on the housing market, the time range is limited from Jan 2019 to June 2021, the latest date which the data is available.
-### Data Source 2: Others
-Due to time limitation, other data is not analyzed. If time allowed, Covid 19 data will be analyzed and integrate with the housing data.
+For better integration with other data sources, here only state level information is used. Smaller granularity can be achieved using lower level geographic information such as Zip code, City, and County.
+Covid 19 impact is very time sensitive, so the time range is limited from Jan 2019 to June 2021, the latest date which the data is available.
+### Data Source 2: Covid
+Similar as the housing market, Covid data is also limited to state level data, and the time range is from the earliest date to June 2021.
+
+### Data Source 3: Political Status
+In terms of political status for each state, I used 2020 election result [4] to represent political status of each state, because the latest election result indicates political preference for each state. If the final election result is Mr. Trump for that state, it is marked as "Replublican", whereas
+the state is marked as "Demoncratic" if the state voted for Mr. Biden. 
 
 ##Part 4: Method
 This project used Pandas as the main library to analyze the data and generate plots. The predicted housing market value is generated from the time range Jan 
-2019 to March 2020 with linear regression from sklearn library.
+2019 to March 2020 with linear regression from sklearn library. 
+
+For the segmentation of state level data in graph 2, surport vector machine is used to fit the model with housing value and covid cases as features X, and political status as results Y.
 
 ##Part 5: Result
 Figure 1. National Trend from Jan 2019 to June 2021
@@ -54,4 +59,4 @@ data analysis may shed light on future housing market.
 [1] https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data
 [2] Housing related data from Zillow: https://www.zillow.com/research/data/
 [3] Covid related data: https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/
-[4] Election Result in 2020: https://fred.stlouisfed.org/series/FEDFUNDS
+[4] Election Result in 2020: https://en.wikipedia.org/wiki/Red_states_and_blue_states
