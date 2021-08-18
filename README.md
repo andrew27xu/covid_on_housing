@@ -57,7 +57,7 @@ From this preliminary analysis, we can clearly see the impact of Covid 19 on the
 data analysis may shed light on future housing market.
 
 ## Ref
-[1] https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data<br />
+[1] https://en.wikipedia.org/wiki/COVID-19_pandemic<br />
 [2] Housing related data from Zillow: https://www.zillow.com/research/data/<br />
 [3] Covid related data: https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/<br />
 [4] Election Result in 2020: https://en.wikipedia.org/wiki/Red_states_and_blue_states<br />
