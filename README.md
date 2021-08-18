@@ -1,6 +1,6 @@
 # Covid Impact on US Housing Market
 
-##Part 1: Motivation
+## Part 1: Motivation
 
 Covid 19 is the most important incident happened in 2020, and continuously affects every
 body's daily life. Based on wikipedia [1] and other sources, there have been 34 million confirmed cases and 608K death in the 
@@ -15,11 +15,11 @@ To answer this question, I chose the housing market as one specific market to sh
 (1) the housing market is directly close to every body's life; (2) it has both local impact as well as national trend; (3) baseline can be easily established by the pre-pandemic housing market; (4) it's also impacted by other factors, such as interest rate
 and people's preference. Therefore, I would like to investigate how the housing market is affected by Covid 19. 
 
-##Part 2: Data Source
+## Part 2: Data Source
 Housing Market Data is acquired from Zillow [2], and Covid 19 data in 
 the US is obtained on USfacts.org [3]. Both data are readily download from the website. The downloaded format is CSV file, where Zillow data is around 72 MB, and Covid data is around 11 MB.
 
-##Part 3: Data Clean and Preprocessing
+## Part 3: Data Clean and Preprocessing
 ### Data Source 1: Zillow
 For better integration with other data sources, here only state level information is used. Smaller granularity can be achieved using lower level geographic information such as Zip code, City, and County.
 Covid 19 impact is very time sensitive, so the time range is limited from Jan 2019 to June 2021, the latest date which the data is available.
@@ -30,13 +30,13 @@ Similar as the housing market, Covid data is also limited to state level data, a
 In terms of political status for each state, I used 2020 election result [4] to represent political status of each state, because the latest election result indicates political preference for each state. If the final election result is Mr. Trump for that state, it is marked as "Replublican", whereas
 the state is marked as "Demoncratic" if the state voted for Mr. Biden. 
 
-##Part 4: Method
+## Part 4: Method
 This project used Pandas as the main library to analyze the data and generate plots. The predicted housing market value is generated from the time range Jan 
 2019 to March 2020 with linear regression from sklearn library. 
 
 For the segmentation of state level data in graph 2, surport vector machine is used to fit the model with housing value and covid cases as features X, and political status as results Y.
 
-##Part 5: Result
+## Part 5: Result
 Figure 1. National Trend from Jan 2019 to June 2021
 ![image1.png](image1.png)
 
@@ -51,11 +51,11 @@ each state with its 2020 election result to indicate its political status. First
 However, there seems a ditinction between Republican states and Demoncratic states. Republican states are more in the lower left corner with smaller number of Covid cases and lower housing value, whereas Demoncratic states are more likely to have more Covid Cases and higher housing value.
 To segment Republican and Demoncratic states, I used a simple SVM model with linear kernel. The black line shows the decision surface based on housing value and covid cases. You can see the model segments the data points quite well. 
 
-##Part 6: Conclusion
+## Part 6: Conclusion
 From this preliminary analysis, we can clearly see the impact of Covid 19 on the housing market. Due to time limitation, I only get chance to analyze the data at national and state level, but further analysis can be done with these data sets down to county level. As more Covid show up due to Delta variants, the past
 data analysis may shed light on future housing market.
 
-##Ref
+## Ref
 [1] https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data
 [2] Housing related data from Zillow: https://www.zillow.com/research/data/
 [3] Covid related data: https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/
