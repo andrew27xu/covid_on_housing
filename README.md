@@ -27,8 +27,8 @@ Covid 19 impact is very time sensitive, so the time range is limited from Jan 20
 Similar as the housing market, Covid data is also limited to state level data, and the time range is from the earliest date to June 2021.
 
 ### Data Source 3: Political Status
-In terms of political status for each state, I used 2020 election result [4] to represent political status of each state, because the latest election result indicates political preference for each state. If the final election result is Mr. Trump for that state, it is marked as "Replublican", whereas
-the state is marked as "Demoncratic" if the state voted for Mr. Biden. 
+In terms of political status for each state, I used 2020 election result [4] to represent political status of each state, assuming the latest election result represents the latest political preference for each state. 
+If the final election result is Mr. Trump for that state, it is marked as "Replublican", and vise versa. 
 
 ## Part 4: Method
 This project used Pandas as the main library to analyze the data and generate plots. The predicted housing market value is generated from the time range Jan 
