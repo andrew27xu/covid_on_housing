@@ -14,7 +14,7 @@ To answer this question, I chose the housing market as one specific market to sh
 (1) it has both local market as well as national trend;  (2) it's also impacted by many other factors, such as interest rate
 and people's sentiment, suply chain etc, so we can build a very complex model for prediction.
 
-We have seen many articles about national housing market condition, but to my best knowledge, very limited quantitative correlation established between housing market and Covid 19, and most study focused on national trend, but not local level. 
+We have seen many articles about housing market condition, but to my best knowledge, most study focused on national trend, not local level, and very limited quantitative correlation established between housing market and Covid 19.
 
 So the project that I propose will mainly focus on these two aspects. The questions I am trying to answer here are What is housing market trend in the different areas, such as different county and zip code? What are the most determining factors for the housing market during pandemic? 
 
