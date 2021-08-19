@@ -53,7 +53,9 @@ However, there seems a ditinction between Republican states and Demoncratic stat
 To segment Republican and Demoncratic states, I used a simple SVM model with linear kernel. The black line shows the decision surface based on housing value and covid cases. You can see the model segments the data points quite well. 
 
 ## Part 6: Conclusion
-From this preliminary analysis, we can clearly see the impact of Covid 19 on the housing market. Due to time limitation, I only get chance to analyze the data at national and state level, but further analysis can be done with these data sets down to county level. As more Covid show up due to Delta variants, the past
+From this preliminary analysis, we can clearly see the impact of Covid 19 on the housing market, and possibly a political status dependence. 
+Due to time limitation, I only get chance to analyze the data at national and state level, but further analysis can be done with these data sets down to county level and even for each zip code for better data visualization.
+If time allows, more factors will be analyzed such as general sentiment from Tweeter, stock market, supply chain and demographic information.  As more Covid show up due to Delta variants, the past
 data analysis may shed light on future housing market.
 
 ## Ref
