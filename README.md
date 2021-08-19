@@ -7,7 +7,7 @@ body's daily life. Based on wikipedia [1] and other sources, there have been 34 
 United States only. 
 
 Since beginning of 2020 when Covid 19 started, every aspect of daily life has been changed, such as physical and mental health,
-social justice and inequality, racial discrimination, as well as economy. My interest lies in how Covid 19 affects common people's life 
+social justice and inequality, as well as economy. My interest lies in how Covid 19 affects common people's life 
 financially. 
 
 To answer this question, I chose the housing market as one specific market to shed lights on Covid 19 impacts for following two reasons:
