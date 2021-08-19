@@ -62,11 +62,11 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i,df_s,df_pol):
 
     #plot average
     covid_average = pd.concat([df_c_average_T["average"],df_d_average_T["average"]],axis=1)
-    covid_average.columns=["Average Covid Cases", "Average Covid Death"]
+    covid_average.columns=["Covid Cases", "Covid Death"]
     z_average = df_z_average_T[['average','predicted']]
-    z_average.columns = ["Average Housing Price", "Predicted Housing Price"]
+    z_average.columns = ["Housing Price", "Predicted Housing Price"]
     average_plot = pd.concat([covid_average, z_average], axis=1)
-    average_plot = average_plot[pd.notnull(average_plot["Average Housing Price"])]
+    average_plot = average_plot[pd.notnull(average_plot["Housing Price"])]
     average_plot = average_plot.fillna(0)
 
     fig, ax = plt.subplots()
@@ -78,17 +78,20 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i,df_s,df_pol):
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
     ax.set_title ("National Trend From Jan 2019 to June 2021",fontsize=16)
     ax.set_xlabel("Time [date]", fontsize=14)
-    ax.set_ylabel ("Average Housing Price [$]",fontsize=14)
+    ax.set_ylabel ("Housing Price [$]",fontsize=14)
+
 
     ax1_2 =ax.twinx()
+
     for col, style, lw in zip(average_plot.columns[:1], styles[:1], linewidths[:1]):
         average_plot[col].plot(style=style, lw=lw, ax=ax1_2)
-    ax1_2.set_ylabel("Average Covid Cases", fontsize=14)
+    ax1_2.set_ylabel("Covid Cases", fontsize=14)
     # combine legends
     lines, labels = ax.get_legend_handles_labels()
     lines2, labels2 = ax1_2.get_legend_handles_labels()
     ax1_2.legend(lines + lines2, labels + labels2, loc=0)
-
+    start = dt.datetime(2020,3,31)
+    plt.vlines(x=start, ymin=0, ymax=14000, colors="k",linestyles=":")
     plt.tight_layout()
     plt.savefig("image1.png")
 
