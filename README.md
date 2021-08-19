@@ -18,7 +18,7 @@ We have seen many articles about housing market condition, but to my best knowle
 
 So the project that I propose will mainly focus on these two aspects. The questions I am trying to answer here are What is housing market trend in the different areas, such as different county and zip code? What are the most determining factors for the housing market during pandemic? 
 
-I think these questions will be useful for several groups of people. First of all, potential buyers, sellers and agents who are interested in buying or selling houses in different areas. Housing market analysts who are actively watching the market at both national and local level. And policy makers who mainly focused on the national trend.
+I think these questions will be useful for several groups of people: potential buyers, sellers and agents who are interested in buying or selling houses in different areas, housing market analysts who are actively watching the market at both national and local level, and policy makers who mainly focused on the national trend.
 
 
 ## Part 2: Data Source
