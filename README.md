@@ -14,11 +14,11 @@ To answer this question, I chose the housing market as one specific market to sh
 (1) it has both local market as well as national trend;  (2) it's also impacted by many other factors, such as interest rate
 and people's sentiment, suply chain etc, so we can build a very complex model for prediction.
 
-We have seen many articles about housing market condition, but to my best knowledge, most study focused on national trend, not local level, and very limited quantitative correlation established between housing market and Covid 19.
+We have seen many articles about housing market condition, but to my best knowledge, most study focused on national trend, not local level, and very limited quantitative correlation has been established between the housing market and Covid 19.
 
-So the project that I propose will mainly focus on these two aspects. The questions I am trying to answer here are What is housing market trend in the different areas, such as different county and zip code? What are the most determining factors for the housing market during pandemic? 
+So the project that I propose will mainly focus on these two aspects. The questions I am trying to answer here are what is the housing market trend in the different areas, such as different counties and zip codes? what are the most determining factors for the housing market during pandemic? 
 
-I think these questions will be useful for several groups of people: potential buyers, sellers and agents who are interested in buying or selling houses in different areas, housing market analysts who are actively watching the market at both national and local level, and policy makers who mainly focused on the national trend.
+I think these questions will be useful for several groups of people: potential buyers, sellers and agents who are interested in buying or selling houses in different areas, housing market analysts who are actively watching the market at both national and local level, and policymakers who mainly focus on the national trend.
 
 
 ## Part 2: Data Source
