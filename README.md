@@ -7,13 +7,19 @@ body's daily life. Based on wikipedia [1] and other sources, there have been 34 
 United States only. 
 
 Since beginning of 2020 when Covid 19 started, every aspect of daily life has been changed, such as physical and mental health,
-social justice and inequality, racial discrimination, as well as economy.
-The most prominent effect of Covid 19 on economy is great amount of QE, and low interest rates. My interest lies in how Covid 19 affects common people's life 
+social justice and inequality, racial discrimination, as well as economy. My interest lies in how Covid 19 affects common people's life 
 financially. 
 
-To answer this question, I chose the housing market as one specific market to shed lights on Covid 19 impacts for following reasons:
-(1) the housing market is directly close to every body's life; (2) it has both local impact as well as national trend; (3) baseline can be easily established by the pre-pandemic housing market; (4) it's also impacted by other factors, such as interest rate
-and people's preference. Therefore, I would like to investigate how the housing market is affected by Covid 19. 
+To answer this question, I chose the housing market as one specific market to shed lights on Covid 19 impacts for following two reasons:
+(1) it has both local market as well as national trend;  (2) it's also impacted by many other factors, such as interest rate
+and people's sentiment, suply chain etc, so we can build a very complex model for prediction.
+
+We have seen many articles about national housing market condition, but to my best knowledge, very limited correlation established between housing market and Covid 19, and most study focused on national trend, but not local level. 
+
+So the project that I propose will mainly focus on these two aspects. The questions I am trying to answer here are What is housing market trend in the different areas, such as different county and zip code? What are the most determining factors for the housing market during pandemic? 
+
+I think these questions will be useful for several groups of people. First of all, potential buyers, sellers and agents who are interested in buying or selling houses in different areas. Housing market analysts who are actively watching the market at both national and local level. And policy makers who mainly focused on the national trend.
+
 
 ## Part 2: Data Source
 Housing Market Data is acquired from Zillow [2], and Covid 19 data in 
