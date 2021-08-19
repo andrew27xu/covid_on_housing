@@ -100,7 +100,7 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i,df_s,df_pol):
     covid_by_state = df_c_average.iloc[:,-1:]
     house_by_state = df_z_average.iloc[:, -1:]
     house_covid = pd.concat([covid_by_state,house_by_state],axis=1)
-    house_covid.columns = ["Covid Cases","Housing Value"]
+    house_covid.columns = ["Covid Cases","Housing Price"]
 
 
     #political
@@ -119,9 +119,9 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i,df_s,df_pol):
     fig2, ax2 = plt.subplots()
     ax2.get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
-    ax2.set_title("\n".join(wrap("Average Housing Value in June 2021 vs Accumulated Covid Cases By June 2021 For Each State",35)), fontsize=16)
-    ax2.set_xlabel("\n".join(wrap("Accumulated Covid Cases By State By June 2021 [#]",35)), fontsize=14)
-    ax2.set_ylabel("\n".join(wrap("Average Housing Value By State in June 2021 [$]",35)), fontsize=14)
+    ax2.set_title("\n".join(wrap("Housing Price in June 2021 vs Accumulated Covid Cases By June 2021 For Each State",35)), fontsize=16)
+    ax2.set_xlabel("\n".join(wrap("Accumulated Covid Cases By June 2021 [#]",35)), fontsize=14)
+    ax2.set_ylabel("\n".join(wrap("Housing Price in June 2021 [$]",35)), fontsize=14)
     #no label
     #house_covid_pol.plot.scatter(x="Covid Cases", y="Housing Value", s=50, linewidth=0.1)
     #label method1
@@ -142,10 +142,10 @@ def covid(df_z,df_p,df_d,df_c,df_r,df_i,df_s,df_pol):
     cs = ["r","b"]
     for i,p in enumerate(political):
         data = house_covid_pol[house_covid_pol["political status"]==p]
-        ax2.scatter(x=data["Covid Cases"],y=data["Housing Value"],label=p, s=50, linewidth=0.1,c=cs[i])
+        ax2.scatter(x=data["Covid Cases"],y=data["Housing Price"],label=p, s=50, linewidth=0.1,c=cs[i])
     #fitting
     clf = svm.SVC(kernel='linear', C=1000)
-    x= house_covid_pol[["Covid Cases","Housing Value"]].to_numpy()
+    x= house_covid_pol[["Covid Cases","Housing Price"]].to_numpy()
     y = np.expand_dims(house_covid_pol["political status"].to_numpy(),axis=1)
     clf.fit(x, y)
     # plot the decision function
